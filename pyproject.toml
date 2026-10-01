@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "churn-prediction"
+version = "0.1.0"
+description = "Telco customer churn prediction: end-to-end ML project with API and demo."
+requires-python = ">=3.10"
+dynamic = ["dependencies"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.pytest.ini_options]
+# "src" makes `import churn` work without installing; "." makes the top-level
+# `api` and `app` packages importable by the tests.
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+filterwarnings = [
+    # scikit-learn 1.8 deprecation surfaced via third-party estimators.
+    "ignore::FutureWarning:sklearn.linear_model._logistic",
+]

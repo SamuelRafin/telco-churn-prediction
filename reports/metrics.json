@@ -1,0 +1,270 @@
+{
+  "selection_metric": "roc_auc",
+  "n_folds": 5,
+  "tuned": true,
+  "baseline_model": "logistic_regression",
+  "best_model": "xgboost",
+  "cv_results": {
+    "xgboost": {
+      "roc_auc_mean": 0.8496879238931502,
+      "roc_auc_std": 0.010928538983882536,
+      "average_precision_mean": 0.6690997655386997,
+      "average_precision_std": 0.021621676914335655,
+      "f1_mean": 0.6338121743159614,
+      "f1_std": 0.017395775302139097,
+      "recall_mean": 0.7993311036789298,
+      "recall_std": 0.025906243118444243,
+      "precision_mean": 0.5253078212925228,
+      "precision_std": 0.016524657140682426
+    },
+    "random_forest": {
+      "roc_auc_mean": 0.8480002114270189,
+      "roc_auc_std": 0.009685291583204128,
+      "average_precision_mean": 0.6624680170793529,
+      "average_precision_std": 0.018720770450629677,
+      "f1_mean": 0.6294362534828899,
+      "f1_std": 0.015430380537416515,
+      "recall_mean": 0.791304347826087,
+      "recall_std": 0.024357379874291787,
+      "precision_mean": 0.5227706928428268,
+      "precision_std": 0.014819918507375912
+    },
+    "logistic_regression": {
+      "roc_auc_mean": 0.8462193813010874,
+      "roc_auc_std": 0.012724140518868233,
+      "average_precision_mean": 0.658876307895554,
+      "average_precision_std": 0.019029540736565095,
+      "f1_mean": 0.6273698693594851,
+      "f1_std": 0.023949272105304446,
+      "recall_mean": 0.7999999999999999,
+      "recall_std": 0.03792117132590868,
+      "precision_mean": 0.5162290504933063,
+      "precision_std": 0.019179730832398375
+    }
+  },
+  "best_params": {
+    "logistic_regression": {
+      "model__penalty": "l2",
+      "model__C": 10.0
+    },
+    "random_forest": {
+      "model__n_estimators": 400,
+      "model__min_samples_leaf": 20,
+      "model__max_features": "sqrt",
+      "model__max_depth": 16
+    },
+    "xgboost": {
+      "model__subsample": 0.9,
+      "model__reg_lambda": 0.5,
+      "model__n_estimators": 400,
+      "model__min_child_weight": 3,
+      "model__max_depth": 4,
+      "model__learning_rate": 0.01,
+      "model__colsample_bytree": 0.6
+    }
+  },
+  "split": {
+    "n_train": 5634,
+    "n_test": 1409,
+    "train_churn_rate": 0.2653532126375577,
+    "test_churn_rate": 0.2654364797728886
+  },
+  "test_evaluation": {
+    "roc_auc": 0.8472344932702989,
+    "pr_auc": 0.663886064419671,
+    "threshold_choice": {
+      "threshold": 0.4549295902252197,
+      "precision": 0.5,
+      "recall": 0.8262032085561497,
+      "f1": 0.6229838709677419,
+      "precision_floor": 0.5
+    },
+    "at_default_threshold": {
+      "threshold": 0.5,
+      "accuracy": 0.7501774308019872,
+      "precision": 0.5190972222222222,
+      "recall": 0.7994652406417112,
+      "f1": 0.6294736842105263,
+      "true_negatives": 758,
+      "false_positives": 277,
+      "false_negatives": 75,
+      "true_positives": 299
+    },
+    "at_tuned_threshold": {
+      "threshold": 0.4549295902252197,
+      "accuracy": 0.7345635202271115,
+      "precision": 0.5,
+      "recall": 0.8262032085561497,
+      "f1": 0.6229838709677419,
+      "true_negatives": 726,
+      "false_positives": 309,
+      "false_negatives": 65,
+      "true_positives": 309
+    },
+    "classification_report": {
+      "Retained": {
+        "precision": 0.9178255372945638,
+        "recall": 0.7014492753623188,
+        "f1-score": 0.7951807228915663,
+        "support": 1035.0
+      },
+      "Churned": {
+        "precision": 0.5,
+        "recall": 0.8262032085561497,
+        "f1-score": 0.6229838709677419,
+        "support": 374.0
+      },
+      "accuracy": 0.7345635202271115,
+      "macro avg": {
+        "precision": 0.7089127686472819,
+        "recall": 0.7638262419592343,
+        "f1-score": 0.7090822969296541,
+        "support": 1409.0
+      },
+      "weighted avg": {
+        "precision": 0.8069193975158789,
+        "recall": 0.7345635202271115,
+        "f1-score": 0.7494733966889329,
+        "support": 1409.0
+      }
+    },
+    "n_test": 1409
+  },
+  "shap_global_importance": [
+    {
+      "feature": "Contract_Month-to-month",
+      "mean_abs_shap": 0.5507000088691711,
+      "value_shap_corr": 0.9919526219766931,
+      "pushes_toward_churn": true
+    },
+    {
+      "feature": "tenure",
+      "mean_abs_shap": 0.3239811062812805,
+      "value_shap_corr": -0.8812828924751257,
+      "pushes_toward_churn": false
+    },
+    {
+      "feature": "OnlineSecurity_No",
+      "mean_abs_shap": 0.23318488895893097,
+      "value_shap_corr": 0.9852660161612565,
+      "pushes_toward_churn": true
+    },
+    {
+      "feature": "InternetService_Fiber optic",
+      "mean_abs_shap": 0.20208226144313812,
+      "value_shap_corr": 0.9724649251563655,
+      "pushes_toward_churn": true
+    },
+    {
+      "feature": "Contract_Two year",
+      "mean_abs_shap": 0.20074614882469177,
+      "value_shap_corr": -0.9934940546168851,
+      "pushes_toward_churn": false
+    },
+    {
+      "feature": "MonthlyCharges",
+      "mean_abs_shap": 0.17627550661563873,
+      "value_shap_corr": 0.8557995904716164,
+      "pushes_toward_churn": true
+    },
+    {
+      "feature": "TechSupport_No",
+      "mean_abs_shap": 0.1615125685930252,
+      "value_shap_corr": 0.9840074424996602,
+      "pushes_toward_churn": true
+    },
+    {
+      "feature": "PaymentMethod_Electronic check",
+      "mean_abs_shap": 0.15194296836853027,
+      "value_shap_corr": 0.9743873528754307,
+      "pushes_toward_churn": true
+    },
+    {
+      "feature": "TotalCharges",
+      "mean_abs_shap": 0.1276812106370926,
+      "value_shap_corr": -0.622563250953194,
+      "pushes_toward_churn": false
+    },
+    {
+      "feature": "PaperlessBilling_No",
+      "mean_abs_shap": 0.07154017686843872,
+      "value_shap_corr": -0.947457422604044,
+      "pushes_toward_churn": false
+    },
+    {
+      "feature": "StreamingMovies_Yes",
+      "mean_abs_shap": 0.07139397412538528,
+      "value_shap_corr": 0.8274343987576527,
+      "pushes_toward_churn": true
+    },
+    {
+      "feature": "MultipleLines_No",
+      "mean_abs_shap": 0.05583885684609413,
+      "value_shap_corr": -0.9411000068463333,
+      "pushes_toward_churn": false
+    },
+    {
+      "feature": "OnlineBackup_No",
+      "mean_abs_shap": 0.04953770339488983,
+      "value_shap_corr": 0.9518969761216607,
+      "pushes_toward_churn": true
+    },
+    {
+      "feature": "InternetService_DSL",
+      "mean_abs_shap": 0.0441281832754612,
+      "value_shap_corr": -0.9060969205708613,
+      "pushes_toward_churn": false
+    },
+    {
+      "feature": "PaperlessBilling_Yes",
+      "mean_abs_shap": 0.031193846836686134,
+      "value_shap_corr": 0.9557669568907153,
+      "pushes_toward_churn": true
+    }
+  ],
+  "shap_example_customer": {
+    "churn_probability": 0.9429356455802917,
+    "top_factors": [
+      {
+        "feature": "tenure",
+        "shap_value": 0.6556921005249023,
+        "direction": "increases churn risk"
+      },
+      {
+        "feature": "Contract_Month-to-month",
+        "shap_value": 0.4577139616012573,
+        "direction": "increases churn risk"
+      },
+      {
+        "feature": "TotalCharges",
+        "shap_value": 0.2262696921825409,
+        "direction": "increases churn risk"
+      },
+      {
+        "feature": "MonthlyCharges",
+        "shap_value": 0.20400047302246094,
+        "direction": "increases churn risk"
+      },
+      {
+        "feature": "InternetService_Fiber optic",
+        "shap_value": 0.19847024977207184,
+        "direction": "increases churn risk"
+      },
+      {
+        "feature": "OnlineSecurity_No",
+        "shap_value": 0.1758892834186554,
+        "direction": "increases churn risk"
+      },
+      {
+        "feature": "TechSupport_No",
+        "shap_value": 0.15172070264816284,
+        "direction": "increases churn risk"
+      },
+      {
+        "feature": "PaymentMethod_Electronic check",
+        "shap_value": 0.15051282942295074,
+        "direction": "increases churn risk"
+      }
+    ]
+  }
+}

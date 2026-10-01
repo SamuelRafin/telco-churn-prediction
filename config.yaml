@@ -1,0 +1,45 @@
+# Configuration for the Telco Customer Churn Prediction project.
+# All paths are relative to the project root.
+
+project:
+  name: telco-churn-prediction
+  random_seed: 42
+
+data:
+  # Raw dataset location (download the IBM Telco Customer Churn CSV here).
+  raw_path: data/telco_churn.csv
+  # Where cleaned/processed data is written.
+  processed_path: data/processed_churn.csv
+  # Target column in the raw dataset.
+  target_column: Churn
+  # Identifier column to drop before modeling.
+  id_column: customerID
+  # Positive class label in the raw target (mapped to 1).
+  positive_label: "Yes"
+
+split:
+  test_size: 0.2
+  stratify: true
+
+model:
+  # Directory for persisted model artifacts.
+  artifacts_dir: models
+  # Filename for the persisted end-to-end pipeline.
+  model_file: churn_pipeline.joblib
+  # Metric used to select the best model during comparison.
+  selection_metric: roc_auc
+  # Decision threshold used for the churn/no-churn call. Set by
+  # `python -m churn.evaluate --write-threshold`, which maximises recall
+  # subject to a precision floor. Not 0.5, because missing a churner costs
+  # more than a needless retention offer.
+  decision_threshold: 0.4549
+
+reports:
+  # Where generated charts are saved.
+  figures_dir: reports/figures
+  # Where model metrics are written as JSON.
+  metrics_file: reports/metrics.json
+
+api:
+  host: 127.0.0.1
+  port: 8000

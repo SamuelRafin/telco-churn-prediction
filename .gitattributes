@@ -1,0 +1,10 @@
+# Normalise line endings so Windows checkouts don't produce noisy diffs.
+* text=auto eol=lf
+
+*.png binary
+*.joblib binary
+*.csv text eol=lf
+
+# Notebooks are committed with outputs so the charts render on GitHub. Treating
+# them as binary keeps git from trying to merge the embedded base64 blobs.
+*.ipynb -diff
